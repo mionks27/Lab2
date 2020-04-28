@@ -34,8 +34,8 @@ public class EmployeesController {
 
 
     @GetMapping("/new")
-    public String newEmployee(Model model){
-        model.addAttribute("listaJob",jobRepository.findAll());
+    public String NuevoEmployee(Model model){
+        model.addAttribute("listaJob",employeeRepository.findAll());
         return "Employee/newForm";
     }
 
