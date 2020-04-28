@@ -22,7 +22,7 @@
         <td th:text="${info.index + 1}"></td>
         <td th:text="${dep.department_name}"></td>
         <td th:text="${dep.manager_id != null} ? ${dep.manager_id} : 'No tiene Jefe'"></td>
-        <td th:each="${dep.location_id}" ></td>
+        <td th:text="${dep.location_id}" ></td>
         <td><a class="btn btn-primary" th:href="@{'/Department/editar' + '?id=' + ${dep.department_id}}">Editar</a></td>
         <td><a class="btn btn-danger" th:href="@{'/Department/borrar' + '?id=' + ${dep.department_id}}">Borrar</a></td>
     </tr>
