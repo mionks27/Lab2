@@ -40,14 +40,14 @@ public class EmployeesController {
     }
 
 
-    @PostMapping("/save")
-    public String saveEmployee(EmployeesEntity employee,
+    @PostMapping("/guardar")
+    public String guardarEmployee(EmployeesEntity employee,
                                RedirectAttributes attr){
 
         if (employee.getEmployee_id() != null){
-            attr.addFlashAttribute("msg", "Actualizado exitosamente");
+            attr.addFlashAttribute("msg", "Empleado Actualizado exitosamente");
         }else {
-            attr.addFlashAttribute("msg","Creado exitosamente");
+            attr.addFlashAttribute("msg"," Empleado Creado exitosamente");
         }
         employeeRepository.save(employee);
 
