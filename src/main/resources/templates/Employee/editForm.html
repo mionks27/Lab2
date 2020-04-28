@@ -2,57 +2,77 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Producto</title>
+    <title>Editar Producto</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="container">
-<h2>Nuevo Producto</h2>
+<h2>Editar Producto</h2>
 <hr/>
 <form method="post" th:action="@{'/employee/save'}">
+    <input th:value="${employee.employee_id}" name="employee_id" type="hidden"/>
     <div class="form-group">
         <label for="first_name">First Name</label>
-        <input type="text" class="form-control" name="first_name" id="first_name">
+        <input th:value="${employee.first_name}" type="text" class="form-control" name="first_name"
+               id="first_name">
     </div>
     <div class="form-group">
         <label for="last_name">Last Name</label>
-        <input type="text" class="form-control" name="last_name" id="last_name">
+        <input th:value="${employee.last_name}" type="text" class="form-control" name="last_name"
+               id="last_name">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" id="email">
+        <input th:value="${employee.email}" type="text" class="form-control" name="email"
+               id="email">
     </div>
     <div class="form-group">
         <label for="phone_number">Phone Number</label>
-        <input type="text" class="form-control" name="phone_number" id="phone_number">
+        <input th:value="${employee.email}" type="text" class="form-control" name="phone_number"
+               id="phone_number">
     </div>
     <div class="form-group">
         <label for="hire_date">Hire Date</label>
-        <input type="text" class="form-control" name="hire_date" id="hire_date">
+        <input th:value="${employee.hire_date}" type="text" class="form-control" name="hire_date"
+               id="hire_date">
     </div>
     <div class="form-group">
         <label for="job_id">Job id</label>
-        <select class="form-control" name="category" id="category">
-            <option th:each="categoria : ${listaCategorias}" th:value="${categoria.id}"
-                    th:text="${categoria.categoryname}"></option>
+        <select class="form-control" name="job_id" id="job_id">
+            <option th:each="job : ${listaJob}" th:value="${job.job_id}"
+                    th:text="${job.job_title}"></option>
         </select>
     </div>
     <div class="form-group">
         <label for="salary">Salary</label>
-        <input type="number" class="form-control" name="salary" id="salary">
+        <input th:value="${employee.salary}" type="number" class="form-control" name="salary" id="salary">
     </div>
     <div class="form-group">
         <label for="commission_pct">Commission pct</label>
-        <input type="number" class="form-control" name="commission_pct" id="commission_pct">
+        <input th:value="${employee.commission_pct}" type="number" class="form-control" name="commission_pct" id="commission_pct">
     </div>
-    <div class="for m-check pb-2">
-        <input class="form-check-input" type="checkbox" name="discontinued" id="discontinued">
-        <label class="form-check-label" for="discontinued">¿Descontinuado?</label>
+    <div class="form-group">
+        <label for="manager_id">Manager id</label>
+        <input th:value="${employee.manager_id}" type="number" class="form-control" name="manager_id" id="manager_id">
+    </div>
+    <div class="form-group">
+        <label for="department_id">Department</label>
+        <select class="form-control" name="department_id" id="department_id">
+            <option th:each="department : ${listaDepartment}" th:value="${department.department_id}"
+                    th:text="${department.department_name}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="supplier">Proveedor</label>
+        <select class="form-control" name="supplier" id="supplier">
+            <option th:each="department : ${listaDepartment}" th:value="${department.department_id}" th:text="${department.department_name}"
+                    th:selected="${supplier.id == product.supplier.id}"></option>
+        </select>
     </div>
     <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
-    <button type="submit" class="btn btn-primary">Registrar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
 </body>
 </html>
