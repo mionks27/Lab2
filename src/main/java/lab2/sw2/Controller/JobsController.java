@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/job")
@@ -27,9 +29,19 @@ public class JobsController {
 
     @GetMapping("/new")
     public String newEmployee(Model model){
-        model.addAttribute("listaJob",jobsRepository.findAll());
-        return "Employee/newForm";
+        model.addAttribute("job",jobsRepository.findAll());
+        return "job/newForm";
     }
 
+    @GetMapping("/editar")
+    public String editEmployee( Model model, @RequestParam("id") String id
+                                ){
+        Optional<JobsEntity> job = jobsRepository.findById(id);
+        if (job.isPresent()){
+            JobsEntity job2 = job.get();
+            model.addAttribute("job",job2);
+        }
+        return "job/editForm";
+    }
 
 }
