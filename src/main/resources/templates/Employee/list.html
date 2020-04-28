@@ -6,42 +6,40 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <title>Lista de Productos</title>
+    <title>Employee List</title>
 </head>
 <body>
 <div class="container">
-    <h1>Lista de Productos</h1>
-    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/product/new'}">Nuevo Producto</a>
+    <h1>Employee List</h1>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/new'}">New Employee</a>
+    <!--
     <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    -->
     <table class="table">
-        <thead>
         <tr>
             <th>#</th>
-            <th>Product Name</th>
-            <th>Categoría</th>
-            <th>Proveedor</th>
-            <th>Precio Unitario</th>
-            <th>Stock</th>
-            <th>¿Descontinuado?</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>email</th>
+            <th>Phone Number</th>
+            <th>Hire Date</th>
+            <th>Salary</th>
             <th></th>
             <th></th>
         </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product, info : ${listaProductos}">
+        <tr th:each="e , info : ${listaEmployee}">
             <td th:text="${info.index + 1}"></td>
-            <td th:text="${product.productname}"></td>
-            <td th:text="${product.category.categoryname}"></td>
-            <td th:text="${product.supplier.companyname}"></td>
-            <td th:text="${product.unitprice}"></td>
-            <td th:text="${product.unitsinstock}"></td>
-            <td th:text="${product.discontinued?'si':'no'}"></td>
-            <td><a class="btn btn-primary" th:href="@{'/product/edit' + '?id=' + ${product.id}}">Editar</a>
+            <td th:text="${e.first_name}"></td>
+            <td th:text="${e.last_name}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.phone_number}"></td>
+            <td th:text="${e.hire_date}"></td>
+            <td th:text="${e.salary}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/employee/edit' + '?id=' + ${e.employee_id}}">Editar</a>
             </td>
-            <td><a class="btn btn-danger" th:href="@{'/product/delete' + '?id=' + ${product.id}}">Borrar</a>
+            <td><a class="btn btn-danger" th:href="@{'/employee/delete' + '?id=' + ${e.employee_id}}">Borrar</a>
             </td>
         </tr>
-        </tbody>
     </table>
 </div>
 </body>

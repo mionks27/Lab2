@@ -1,5 +1,6 @@
 package lab2.sw2.Controller;
 import lab2.sw2.Entity.EmployeesEntity;
+import lab2.sw2.Repository.DepartmentsRepository;
 import lab2.sw2.Repository.EmployeesRepository;
 import lab2.sw2.Repository.JobsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class EmployeesController {
     @Autowired
     JobsRepository jobRepository;
 
+    @Autowired
+    DepartmentsRepository departmentsRepository;
 
     @GetMapping("")
     public String listEmployee(Model model){
@@ -35,7 +38,8 @@ public class EmployeesController {
 
     @GetMapping("/new")
     public String NuevoEmployee(Model model){
-        model.addAttribute("listaJob",employeeRepository.findAll());
+        model.addAttribute("listaJob",jobRepository.findAll());
+        model.addAttribute("listaDepartment",departmentsRepository.findAll());
         return "Employee/newForm";
     }
 
