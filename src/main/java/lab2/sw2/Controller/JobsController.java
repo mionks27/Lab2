@@ -10,10 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
-=======
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
->>>>>>> e6036960f8771565601ee6186a41aceb48c567e2
 
 import java.util.List;
 import java.util.Optional;
