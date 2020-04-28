@@ -1,6 +1,7 @@
 package lab2.sw2.Controller;
 import lab2.sw2.Entity.DepartmentsEntity;
 
+import lab2.sw2.Entity.JobsEntity;
 import lab2.sw2.Entity.LocationsEntity;
 import lab2.sw2.Repository.DepartmentsRepository;
 import lab2.sw2.Repository.LocationsRepository;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.jws.WebParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,9 +59,14 @@ public class DepartmentsController {
     }
 
     @GetMapping("/editar")
-    public String editar(){
-        
-        return "";
+    public String editar(@RequestParam("id") int id, Model model){
+        Optional<DepartmentsEntity> dep = departmentsRepository.findById(id);
+        if (dep.isPresent()){
+            DepartmentsEntity dep2 = dep.get();
+            model.addAttribute("dep",dep2);
+        }
+        return "Department/editForm";
+
     }
 
     @GetMapping("/delete")
