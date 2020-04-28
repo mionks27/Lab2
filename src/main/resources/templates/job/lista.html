@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>lista jobs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<h2>Lista Departments</h2>
+<a class="btn btn-info" th:href="@{'/agregarD'}" >Agregar Departamento</a>
+<h4>Ese soy Yo</h4>
+<--div th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-success" role="alert"></--div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">job title</th>
+        <th scope="col">min salary</th>
+        <th scope="col">max salary</th>
+
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jeje,i:${listaj}">
+        <th th:text="${i.index+1}" scope="col"></th>
+        <th scope="col" th:text="${jeje.job_title}"></th>
+        <th scope="col" th:text="${jeje.min_salary}"></th>
+        <th scope="col" th:text="${jeje.max_salary}"></th>
+
+        <th><a class="btn btn-primary" th:href="@{'/editar'+'?id='+${jeje.job_id}}">Editar Departamento</a></th>
+        <th><a class="btn btn-danger" th:href="@{'/borrar'+'?id='+${jeje.job_id}}" >Borrar Departamento</a></th>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
