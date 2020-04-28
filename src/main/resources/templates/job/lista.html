@@ -10,9 +10,15 @@
 </head>
 <body class="container">
 <h2>Lista Departments</h2>
+<<<<<<< HEAD
 <a class="btn btn-info" th:href="@{'/job/nuevo'}" >Agregar job</a>
 
 <div th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-success" role="alert"></div>
+=======
+<a class="btn btn-info" th:href="@{'job/new'}" >Agregar Departamento</a>
+<h4>Ese soy Yo</h4>
+<--div th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-success" role="alert"></--div>
+>>>>>>> b4ef4fcee24434f1bfef72189674f944ebb9ff64
 <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
@@ -33,8 +39,8 @@
         <th scope="col" th:text="${jeje.min_salary}"></th>
         <th scope="col" th:text="${jeje.max_salary}"></th>
 
-        <th><a class="btn btn-primary" th:href="@{'/editar'+'?id='+${jeje.job_id}}">Editar Departamento</a></th>
-        <th><a class="btn btn-danger" th:href="@{'/borrar'+'?id='+${jeje.job_id}}" >Borrar Departamento</a></th>
+        <th><a class="btn btn-primary" th:href="@{'/job/editar'+'?id='+${jeje.job_id}}">Editar Departamento</a></th>
+        <th><a class="btn btn-danger" th:href="@{'/job/delete'+'?id='+${jeje.job_id}}" >Borrar Departamento</a></th>
 
     </tr>
     </tbody>
