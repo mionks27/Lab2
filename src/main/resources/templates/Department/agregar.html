@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Agregar Departamento</title>
+</head>
+<body class="container" >
+<h1  class="p-3 mb-2 bg-info text-white" align="center">Completar Datos Requeridos</h1>
+<form   class="p-3 mb-2 bg-secondary text-white" method="post" th:action="@{'/Department/guardar'}" align="center">
+    <div class="form-group">
+        <b><label   for="department_name">Nombre del Departamento</label></b>
+        <input  name="department_name" type="text" class="form-control" id="department_name">
+    </div>
+    <div class="form-group">
+        <b><label   for="manager_id">Manager Id</label></b>
+        <input  name="manager_id" type="text" class="form-control" id="manager_id">
+    </div>
+    <div class="form-group">
+        <b><label   for="location_id">Location Id</label></b>
+        <input  name="location_id" type="text" class="form-control" id="location_id">
+    </div>
+    <div class="form-group">
+        <b><label   for="department_short_name">Department Short Name</label></b>
+        <input  name="department_short_name" type="text" class="form-control" id="department_short_name">
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Departamento</button>        <a th:href="@{'/Department/ListaDep'}" class="btn btn-danger">Cancelar</a>
+</form>
+</body>
+</html>

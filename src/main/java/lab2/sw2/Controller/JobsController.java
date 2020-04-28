@@ -25,5 +25,11 @@ public class JobsController {
         return "job/lista";
     }
 
+    @GetMapping("/new")
+    public String newEmployee(Model model){
+        model.addAttribute("listaJob",jobsRepository.findAll());
+        return "Employee/newForm";
+    }
+
 
 }

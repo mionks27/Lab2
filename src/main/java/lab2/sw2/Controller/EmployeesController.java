@@ -1,5 +1,6 @@
 package lab2.sw2.Controller;
 import lab2.sw2.Entity.EmployeesEntity;
+import lab2.sw2.Repository.DepartmentsRepository;
 import lab2.sw2.Repository.EmployeesRepository;
 import lab2.sw2.Repository.JobsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,15 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/employee")
 public class EmployeesController {
+
     @Autowired
     EmployeesRepository employeeRepository;
 
     @Autowired
     JobsRepository jobRepository;
 
+    @Autowired
+    DepartmentsRepository departmentsRepository;
 
     @GetMapping("")
     public String listEmployee(Model model){
@@ -34,19 +38,20 @@ public class EmployeesController {
 
     @GetMapping("/new")
     public String NuevoEmployee(Model model){
-        model.addAttribute("listaJob",employeeRepository.findAll());
+        model.addAttribute("listaJob",jobRepository.findAll());
+        model.addAttribute("listaDepartment",departmentsRepository.findAll());
         return "Employee/newForm";
     }
 
 
-    @PostMapping("/save")
-    public String saveEmployee(EmployeesEntity employee,
+    @PostMapping("/guardar")
+    public String guardarEmployee(EmployeesEntity employee,
                                RedirectAttributes attr){
 
         if (employee.getEmployee_id() != null){
-            attr.addFlashAttribute("msg", "Actualizado exitosamente");
+            attr.addFlashAttribute("msg", "Empleado Actualizado exitosamente");
         }else {
-            attr.addFlashAttribute("msg","Creado exitosamente");
+            attr.addFlashAttribute("msg"," Empleado Creado exitosamente");
         }
         employeeRepository.save(employee);
 
@@ -80,4 +85,5 @@ public class EmployeesController {
         return "redirect:/employee/";
 
     }
+
 }
