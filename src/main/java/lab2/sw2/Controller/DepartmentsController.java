@@ -1,7 +1,6 @@
 package lab2.sw2.Controller;
 import lab2.sw2.Entity.DepartmentsEntity;
 
-import lab2.sw2.Entity.EmployeesEntity;
 import lab2.sw2.Entity.LocationsEntity;
 import lab2.sw2.Repository.DepartmentsRepository;
 import lab2.sw2.Repository.LocationsRepository;
@@ -55,6 +54,12 @@ public class DepartmentsController {
         }
         departmentsRepository.save(departments);
         return "redirect:/Department/";
+    }
+
+    @GetMapping("/editar")
+    public String editar(){
+        
+        return "";
     }
 
     @GetMapping("/delete")
