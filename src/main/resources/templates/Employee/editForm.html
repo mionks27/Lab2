@@ -9,7 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="container">
-<h2>Editar Producto</h2>
+<h2>Edit Employee</h2>
 <hr/>
 <form method="post" th:action="@{'/employee/save'}">
     <input th:value="${employee.employee_id}" name="employee_id" type="hidden"/>
@@ -57,21 +57,15 @@
         <label for="manager_id">Manager id</label>
         <input th:value="${employee.manager_id}" type="number" class="form-control" name="manager_id" id="manager_id">
     </div>
+
     <div class="form-group">
         <label for="department_id">Department</label>
-        <select class="form-control" name="department_id" id="department_id">
+        <select class="form-control" name="supplier" id="supplier">
             <option th:each="department : ${listaDepartment}" th:value="${department.department_id}"
                     th:text="${department.department_name}"></option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="supplier">Proveedor</label>
-        <select class="form-control" name="supplier" id="supplier">
-            <option th:each="department : ${listaDepartment}" th:value="${department.department_id}" th:text="${department.department_name}"
-                    th:selected="${supplier.id == product.supplier.id}"></option>
-        </select>
-    </div>
-    <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
+    <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
 </body>

@@ -64,6 +64,7 @@ public class EmployeesController {
         Optional<EmployeesEntity> optEmployee = employeeRepository.findById(id);
         model.addAttribute("listaJob",jobRepository.findAll());
         model.addAttribute("listaDepartment",departmentsRepository.findAll());
+
         if(optEmployee.isPresent()){
             EmployeesEntity employee = optEmployee.get();
             model.addAttribute("employee",employee);
